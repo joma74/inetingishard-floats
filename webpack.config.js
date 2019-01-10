@@ -115,7 +115,7 @@ var webpackConfig = [
     plugins: [
       new HtmlWebpackPlugin({
         template: "src/template.html",
-        title: "Template",
+        title: "Inettingishard-floats",
       }),
       new webpack.NamedModulesPlugin(),
     ],

@@ -4,7 +4,10 @@
 
 .page {
   width: 800px;
+  border: 1px solid red;
   margin: 0 auto;
+  overflow: hidden;
+  background-color: #eaedf0;
 }
 
 .menu {
@@ -27,6 +30,7 @@
   /* Yellow */
 }
 .footer {
+  clear: both;
   height: 200px;
   background-color: #d6e9fe;
   /* Light blue */
