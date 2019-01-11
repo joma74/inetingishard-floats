@@ -2,48 +2,6 @@
 
 @tailwind components;
 
-.menu {
-  height: 100px;
-  background-color: #eaedf0;
-  /* Light Grey */
-}
-
-.containex {
-  background-color: #abb6c0;
-  /* Grey */
-}
-
-.page {
-  width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-  background-color: white;
-  /* White */
-}
-
-.sidebar {
-  float: left;
-  width: 200px;
-  height: 300px;
-  background-color: #f09a9d;
-  /* Red */
-}
-.content {
-  float: left;
-  height: 500px;
-  width: 550px;
-  background-color: #f5cf8e;
-  /* Yellow */
-  padding: 20px;
-}
-.article-image {
-  float: left;
-  width: 300px;
-  height: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-
 .footer {
   background-color: rgb(214, 233, 254);
   /* Light blue */
@@ -69,8 +27,8 @@
 
 .ucb {
   height: inherit;
-  overflow: hidden;
-  position: relative;
+  overflow: auto;
+  margin-right: 1rem;
   word-wrap: break-word;
 }
 
@@ -108,6 +66,24 @@
     rgba(178, 214, 255, 1) 100%
   );
   direction: ltr;
+}
+
+/*
+ *  STYLE 3
+ */
+
+.style-3::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.055);
+  background-color: rgba(214, 233, 254, 0.349);
+}
+
+.style-3::-webkit-scrollbar {
+  width: 4px;
+  background-color: rgb(214, 233, 254, 0.349);
+}
+
+.style-3::-webkit-scrollbar-thumb {
+  background-color: rgba(214, 233, 254, 0.349);
 }
 
 @tailwind utilities;
