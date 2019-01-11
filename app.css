@@ -1,89 +1,16 @@
-@tailwind preflight;
+@import "tailwindcss/preflight";
 
-@tailwind components;
+@import "tailwindcss/components";
 
-.footer {
-  background-color: rgb(214, 233, 254);
-  /* Light blue */
-  overflow: auto;
-}
-.footer-item {
-  float: left;
-  width: 31%;
-  margin: 20px 1.15%;
-  height: 12rem;
-  background-color: rgb(178, 214, 255);
-  /* Medium blue */
-}
+@import "tailwindcss/utilities";
 
-.avatar {
-  float: left;
-  width: 4rem;
-  height: 4rem;
-  margin: 1rem;
-  border-radius: 2rem;
-  background-color: rgb(214, 233, 254);
-}
+@import "app-clearfix-hack.css";
 
-.ucb {
-  height: inherit;
-  overflow: auto;
-  margin-right: 1rem;
-  word-wrap: break-word;
-}
+@import "app-myhacks.css";
 
-.username {
-  padding-top: 2.5rem;
-}
-
-.comment {
-  padding-top: 1rem;
-  line-height: 1.5rem;
-  height: 12ch;
-  overflow: hidden;
-}
-
-.ellipses {
-  position: relative;
-}
-
-.ellipses span {
-  display: block;
-  position: absolute;
-  white-space: pre;
-  margin-top: 1rem;
-  line-height: 1.5rem;
-  top: 8ch;
-  width: 8ch;
-  right: 0;
-  background-image: linear-gradient(
-    to right,
-    rgba(178, 214, 255, 0) 0%,
-    rgba(178, 214, 255, 0.7) 3%,
-    rgba(178, 214, 255, 0.98) 15%,
-    rgba(178, 214, 255, 0.99) 20%,
-    rgba(178, 214, 255, 1) 25%,
-    rgba(178, 214, 255, 1) 100%
-  );
-  direction: ltr;
-}
-
-/*
- *  STYLE 3
- */
-
-.style-3::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.055);
-  background-color: rgba(214, 233, 254, 0.349);
-}
-
-.style-3::-webkit-scrollbar {
-  width: 4px;
-  background-color: rgb(214, 233, 254, 0.349);
-}
-
-.style-3::-webkit-scrollbar-thumb {
-  background-color: rgba(214, 233, 254, 0.349);
-}
-
-@tailwind utilities;
+/* https://tailwindcss.com/docs/adding-new-utilities/
+   Tailwind will intelligently group the responsive versions 
+   into its existing media queries which are output at the very 
+   end of the stylesheet. This ensures that any responsive utilities 
+   will always take precedence over unprefixed utilities. 
+*/
