@@ -4,9 +4,11 @@
 
 @import "tailwindcss/utilities";
 
+@import "app-utils.css";
+
 @import "app-clearfix-hack.css";
 
-@import "app-myhacks.css";
+@import "app-footer.css";
 
 /* https://tailwindcss.com/docs/adding-new-utilities/
    Tailwind will intelligently group the responsive versions 

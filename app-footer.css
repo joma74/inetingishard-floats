@@ -12,10 +12,13 @@
   /* Medium blue */
 }
 
-.avatar {
+.ab {
   float: left;
-  width: 4rem;
+}
+
+.avatar {
   height: 4rem;
+  width: 4rem;
   margin: 1rem;
   border-radius: 2rem;
   background-color: rgb(214, 233, 254);
@@ -23,11 +26,12 @@
 
 .ucb {
   height: inherit; /* wa-overspill-hack */
-  overflow: hidden; /* forces a BFC; auto=scrollbar */
+  overflow: auto; /* fix-overflow-expected forces a BFC; fair chance to let usre read her text */
 }
 
 h3 {
   display: block;
+
   height: 6rem; /* wa-verticalalign-hack */
   line-height: 6rem; /* wa-verticalalign-hack */
 }
@@ -39,7 +43,8 @@ h3 span {
 }
 
 .comment {
+  overflow: auto; /* fix-overflow-expected case is longer text than space expected*/
+  height: 7rem;
+  margin-top: -1rem;
   line-height: 1.5rem;
-  height: 12ch;
-  overflow: hidden;
 }
