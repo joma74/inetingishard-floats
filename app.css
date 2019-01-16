@@ -4,6 +4,8 @@
 
 @import "tailwindcss/utilities";
 
+@import "debug-grid.css";
+
 @import "app-ellipsis.css";
 
 @import "app-footer.css";
