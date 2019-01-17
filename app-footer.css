@@ -2,12 +2,21 @@
   background-color: rgb(214, 233, 254);
   /* Light blue */
   overflow: auto; /* just in case sth. overspills */
+  --overall-box-height: 12rem;
+  --firstline-element-height: 6rem;
+  --firstline-margin-height: 1rem;
+  --firstline-box-height: calc(
+    var(--firstline-element-height) - 2 * var(--firstline-margin-height)
+  );
+  --restline-element-height: calc(
+    var(--overall-box-height) - var(--firstline-element-height)
+  );
 }
 .footer-item-container {
   float: left;
   width: 33.33333%;
-  height: 12rem;
-  margin: 1rem 0; /* wa-overspill-hack: margin-top-bottom here, else overspills; margin-left-right else kills 1/3 */
+  height: var(--overall-box-height);
+  margin: 1rem 0rem; /* wa-overspill-hack: margin-top-bottom here, else overspills; margin-left-right else kills 1/3 */
 }
 
 .footer-item {
@@ -21,9 +30,9 @@
 }
 
 .avatar {
-  height: 4rem;
-  width: 4rem;
-  margin: 1rem;
+  height: var(--firstline-box-height);
+  width: var(--firstline-box-height);
+  margin: var(--firstline-margin-height);
   border-radius: 2rem;
   background-color: rgb(214, 233, 254);
 }
@@ -34,19 +43,21 @@
 
 h3 {
   display: block;
-  height: 6rem; /* wa-verticalalign-hack */
-  line-height: 6rem; /* wa-verticalalign-hack */
+  height: var(--firstline-element-height); /* wa-verticalalign-hack */
+  line-height: var(--firstline-element-height); /* wa-verticalalign-hack */
 }
 
 h3 span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal; /* wa-verticalalign-hack */
+  word-break: break-all;
 }
 
 .comment {
   overflow: auto; /* fix-overflow-expected: longer text than space is expected */
-  height: 7rem;
-  margin-top: -1rem; /* wa-verticalalign-hack: negative margin to let comment begin more above */
+  margin-top: -1rem;
+  height: calc(var(--restline-element-height) + 1rem);
+  /* margin-top: -1rem; /* wa-verticalalign-hack: negative margin to let comment begin more above */
   line-height: 1.5rem;
 }
