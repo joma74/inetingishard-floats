@@ -12,6 +12,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --watch --hot --no-progress --config=webpack.config.js",
     "test": "npm-run-all clean testcafe",
     "testcafe": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
+    "testcafe-live": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -L -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
     "startntest": "start-server-and-test start http-get://localhost:8080/dist/index.html testcafe",
     "ci": "npm-run-all clean startntest",
     "postinstall": "mkdirp dist build"
@@ -51,7 +52,7 @@
     "style-loader": "^0.19.0",
     "stylelint-config-recommended": "^2.1.0",
     "tailwindcss": "^0",
-    "testcafe": "^0",
+    "testcafe": "1.0.0-alpha.2",
     "typescript": "^3.0.1",
     "url-loader": "^1.0.1",
     "useragent": "^2.3.0",
