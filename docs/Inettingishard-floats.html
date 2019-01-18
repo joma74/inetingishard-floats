@@ -6173,56 +6173,113 @@ body {
 
 .footer {
   background-color: rgb(214, 233, 254);
-  /* Light blue */
-  overflow: auto; /* just in case sth. overspills */
+  /* Light blue *//* overflow: auto; /* optional - just in case sth. overspills */
+  --overall-perline-box-count: 3;
+  --overall-box-height: 12rem;
+  --firstline-element-height: 6rem;
+  --firstline-margin-height: 1rem;
+  --firstline-box-height: calc(var(--firstline-element-height) - 2 * var(--firstline-margin-height));
+  --secondline-element-lineheight: 1.5rem;
 }
+
+/**
+*  +++++++++++++++++++
+*  +       m-t       +
+*  +++++++++++++++++++
+*  +                 +
+*  +     h-s/w-s     +  
+*  +                 +
+*  +++++++++++++++++++
+*  +       m-b       +
+*  +++++++++++++++++++
+*/
 
 .footer-item-container {
   float: left;
-  width: 33.33333%;
-  height: 12rem;
-  margin: 1rem 0; /* wa-overspill-hack: margin-top-bottom here, else overspills; margin-left-right else kills 1/3 */
+  width: calc(100% / var(--overall-perline-box-count)); /* 33.33333%; */
+  height: var(--overall-box-height);
+  margin: 1rem 0rem; /* wa-overspill-hack: margin-top-bottom here, else overspills; margin-left-right else kills 1/3 */
 }
+
+/**
+*  +++++++++++++++++++
+*  +   +         +   +
+*  +   +         +   +
+*  +   +         +   +
+*  +m-l+   h-i   +m-r+
+*  +   +         +   +
+*  +   +         +   +
+*  +   +         +   +
+*  +++++++++++++++++++
+*/
 
 .footer-item {
   margin: 0 .5rem; /* wa-overspill-hack: margin-top-bottom not here, else overspills; margin-left-right here */
   background-color: rgb(178, 214, 255);
   /* Medium blue */
+  height: inherit; /* wa-overspill-hack: inherit container's height down*/
 }
+
+/**
+*  +++++++++++++++++++
+*  +                 +
+*  +                 +
+*  +                 +
+*  +       f-l       +
+*  +       h-i       +
+*  +                 +
+*  +                 +
+*  +++++++++++++++++++
+*/
 
 .ab {
   float: left;
+  height: inherit; /* wa-overspill-hack: inherit container's height down*/
 }
 
 .avatar {
-  height: 4rem;
-  width: 4rem;
-  margin: 1rem;
+  height: var(--firstline-box-height);
+  width: var(--firstline-box-height);
+  margin: var(--firstline-margin-height);
   border-radius: 2rem;
   background-color: rgb(214, 233, 254);
 }
 
+/**
+*  +++++++++++++++++++
+*  +                 +
+*  +                 +
+*  +                 +
+*  +       d-fr      +
+*  +       h-i       +
+*  +                 +
+*  +                 +
+*  +++++++++++++++++++
+*/
+
 .ucb {
-  overflow: auto; /* fix-overflow-expected: forces a BFC; fair chance to let user read her comment */
+  display: flow-root; /* alt: create right column via BFC *//* overflow: auto; /* alt: create right column via BFC */
+  height: inherit; /* wa-overspill-hack: inherit container's height down*/
 }
 
 h3 {
   display: block;
-  height: 6rem; /* wa-verticalalign-hack */
-  line-height: 6rem; /* wa-verticalalign-hack */
+  height: var(--firstline-element-height); /* wa-verticalalign-hack */
+  line-height: var(--firstline-element-height); /* wa-verticalalign-hack */
 }
 
 h3 span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal; /* wa-verticalalign-hack */
+  word-break: break-all;
 }
 
 .comment {
   overflow: auto; /* fix-overflow-expected: longer text than space is expected */
-  height: 7rem;
-  margin-top: -1rem; /* wa-verticalalign-hack: negative margin to let comment begin more above */
-  line-height: 1.5rem;
+  height: calc(100% - var(--firstline-element-height) + var(--secondline-element-lineheight));
+  margin-top: calc(-1 * var(--secondline-element-lineheight)); /* wa-verticalalign-hack: negative margin to let comment begin more above */
+  line-height: var(--secondline-element-lineheight);
 }
 
 /* https://tailwindcss.com/docs/adding-new-utilities/
@@ -28529,7 +28586,7 @@ h3 span {
 }
 </style></head>
 
-<body class="debug-grid-16"><div class="footer tw_clearfix"><div class="footer-item-container"><div class="footer-item"><div class="ab"><div class="avatar"></div></div> <div class="ucb"><h3 class="username"><span>Sigi Stardust</span></h3> <p class="comment">
+<body class="debug-grid-16"><div class="footer tw_clearfix" style="--overall-perline-box-count:3;"><div class="footer-item-container"><div class="footer-item"><div class="ab"><div class="avatar"></div></div> <div class="ucb"><h3 class="username"><span>Sigi Stardust</span></h3> <p class="comment">
             Aptent vel egestas vestibulum aliquam ullamcorper.
           </p></div></div></div> <div class="footer-item-container"><div class="footer-item"><div class="ab"><div class="avatar"></div></div> <div class="ucb"><h3 class="username"><span>Yanni Novengapopulous</span></h3> <p class="comment">
             Aptent vel egestas vestibulum aliquam ullamcorper volutpat
