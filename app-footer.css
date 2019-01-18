@@ -9,6 +9,17 @@
     var(--firstline-element-height) - 2 * var(--firstline-margin-height)
   );
 }
+/**
+*  +++++++++++++++++++
+*  +       m-t       +
+*  +++++++++++++++++++
+*  +                 +
+*  +     h-s/w-s     +  
+*  +                 +
+*  +++++++++++++++++++
+*  +       m-b       +
+*  +++++++++++++++++++
+*/
 .footer-item-container {
   float: left;
   width: 33.33333%;
@@ -16,15 +27,38 @@
   margin: 1rem 0rem; /* wa-overspill-hack: margin-top-bottom here, else overspills; margin-left-right else kills 1/3 */
 }
 
+/**
+*  +++++++++++++++++++
+*  +   +         +   +
+*  +   +         +   +
+*  +   +         +   +
+*  +m-l+   h-i   +m-r+
+*  +   +         +   +
+*  +   +         +   +
+*  +   +         +   +
+*  +++++++++++++++++++
+*/
 .footer-item {
   margin: 0 0.5rem; /* wa-overspill-hack: margin-top-bottom not here, else overspills; margin-left-right here */
   background-color: rgb(178, 214, 255);
-  height: inherit;
   /* Medium blue */
+  height: inherit; /* wa-overspill-hack: inherit container's height down*/
 }
 
+/**
+*  +++++++++++++++++++
+*  +                 +
+*  +                 +
+*  +                 +
+*  +       f-l       +
+*  +       h-i       +
+*  +                 +
+*  +                 +
+*  +++++++++++++++++++
+*/
 .ab {
   float: left;
+  height: inherit; /* wa-overspill-hack: inherit container's height down*/
 }
 
 .avatar {
@@ -35,10 +69,21 @@
   background-color: rgb(214, 233, 254);
 }
 
+/**
+*  +++++++++++++++++++
+*  +                 +
+*  +                 +
+*  +                 +
+*  +       d-fr      +
+*  +       h-i       +
+*  +                 +
+*  +                 +
+*  +++++++++++++++++++
+*/
 .ucb {
-  display: flow-root; /* alt create right column via BFC */
-  /* overflow: auto; /* alt create right column via BFC */
-  height: inherit;
+  display: flow-root; /* alt: create right column via BFC */
+  /* overflow: auto; /* alt: create right column via BFC */
+  height: inherit; /* wa-overspill-hack: inherit container's height down*/
 }
 
 h3 {
