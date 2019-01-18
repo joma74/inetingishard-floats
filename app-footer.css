@@ -2,6 +2,7 @@
   background-color: rgb(214, 233, 254);
   /* Light blue */
   /* overflow: auto; /* optional - just in case sth. overspills */
+  --overall-perline-box-count: 3;
   --overall-box-height: 12rem;
   --firstline-element-height: 6rem;
   --firstline-margin-height: 1rem;
@@ -23,7 +24,7 @@
 */
 .footer-item-container {
   float: left;
-  width: calc(100% / 3); /* 33.33333%; */
+  width: calc(100% / var(--overall-perline-box-count)); /* 33.33333%; */
   height: var(--overall-box-height);
   margin: 1rem 0rem; /* wa-overspill-hack: margin-top-bottom here, else overspills; margin-left-right else kills 1/3 */
 }
