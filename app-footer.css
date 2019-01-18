@@ -8,6 +8,7 @@
   --firstline-box-height: calc(
     var(--firstline-element-height) - 2 * var(--firstline-margin-height)
   );
+  --secondline-element-lineheight: 1.5rem;
 }
 /**
 *  +++++++++++++++++++
@@ -22,7 +23,7 @@
 */
 .footer-item-container {
   float: left;
-  width: 33.33333%;
+  width: calc(100% / 3); /* 33.33333%; */
   height: var(--overall-box-height);
   margin: 1rem 0rem; /* wa-overspill-hack: margin-top-bottom here, else overspills; margin-left-right else kills 1/3 */
 }
@@ -101,7 +102,12 @@ h3 span {
 
 .comment {
   overflow: auto; /* fix-overflow-expected: longer text than space is expected */
-  height: calc(100% - var(--firstline-element-height) + 1rem);
-  margin-top: -1rem; /* wa-verticalalign-hack: negative margin to let comment begin more above */
-  line-height: 1.5rem;
+  height: calc(
+    100% - var(--firstline-element-height) +
+      var(--secondline-element-lineheight)
+  );
+  margin-top: calc(
+    -1 * var(--secondline-element-lineheight)
+  ); /* wa-verticalalign-hack: negative margin to let comment begin more above */
+  line-height: var(--secondline-element-lineheight);
 }
