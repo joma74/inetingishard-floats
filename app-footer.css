@@ -1,15 +1,12 @@
 .footer {
   background-color: rgb(214, 233, 254);
   /* Light blue */
-  overflow: auto; /* just in case sth. overspills */
+  /* overflow: auto; /* optional - just in case sth. overspills */
   --overall-box-height: 12rem;
   --firstline-element-height: 6rem;
   --firstline-margin-height: 1rem;
   --firstline-box-height: calc(
     var(--firstline-element-height) - 2 * var(--firstline-margin-height)
-  );
-  --restline-element-height: calc(
-    var(--overall-box-height) - var(--firstline-element-height)
   );
 }
 .footer-item-container {
@@ -22,6 +19,7 @@
 .footer-item {
   margin: 0 0.5rem; /* wa-overspill-hack: margin-top-bottom not here, else overspills; margin-left-right here */
   background-color: rgb(178, 214, 255);
+  height: inherit;
   /* Medium blue */
 }
 
@@ -38,7 +36,9 @@
 }
 
 .ucb {
-  overflow: auto; /* fix-overflow-expected: forces a BFC; fair chance to let user read her comment */
+  display: flow-root; /* alt create right column via BFC */
+  /* overflow: auto; /* alt create right column via BFC */
+  height: inherit;
 }
 
 h3 {
@@ -56,8 +56,7 @@ h3 span {
 
 .comment {
   overflow: auto; /* fix-overflow-expected: longer text than space is expected */
-  margin-top: -1rem;
-  height: calc(var(--restline-element-height) + 1rem);
-  /* margin-top: -1rem; /* wa-verticalalign-hack: negative margin to let comment begin more above */
+  height: calc(100% - var(--firstline-element-height) + 1rem);
+  margin-top: -1rem; /* wa-verticalalign-hack: negative margin to let comment begin more above */
   line-height: 1.5rem;
 }
