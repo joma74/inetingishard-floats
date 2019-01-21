@@ -1,22 +1,19 @@
 import { Selector, ClientFunction } from "testcafe"
 import pretty from "pretty"
+const prettyFormat = require("pretty-format")
 import identifyUserAgent from "./utils/identify-useragent"
 
-const fixtureName = "Index_Page_Test"
-
-fixture(fixtureName).page("http://localhost:8080/dist/index.html")
+fixture("Index_Page_Test").page("http://localhost:8080/dist/index.html")
 
 const getUA = ClientFunction(() => navigator.userAgent)
 
-const testName = "dom_has_critical_elements"
-
-test(testName, async (t) => {
+test("dom_has_critical_elements", async (t) => {
   const ua = await getUA()
 
   await t.takeScreenshot(
-    fixtureName +
+    t.testRun.test.fixture.name +
       "/" +
-      testName +
+      t.testRun.test.name +
       "/" +
       identifyUserAgent(ua) +
       "/" +
@@ -33,11 +30,20 @@ test(testName, async (t) => {
 
   await t.expect(svgDashboard.visible).ok()
 
-  const subheadline = await Selector("p[data-desc='subheadline']")
+  /**
+   * @type { SelectorAPI & Element }
+   */
+  let subheadline = /** @type { ? } */ (await Selector(
+    "p[data-desc='subheadline']",
+  ).addCustomDOMProperties({
+    innerHTML: (el) => {
+      return el.innerHTML
+    },
+  }))
 
-  const subheadlineValue = await t.eval(() => subheadline().innerHTML, {
-    dependencies: { subheadline },
-  })
+  //   const subheadlineValue = await t.eval(() => subheadline().innerHTML, {
+  //     dependencies: { subheadline },
+  //   })
 
   const expectedSubHeadlineValue = pretty(`
   	<svg data-desc="dashboard" class="w-6 h-6 opacity-50 fill-current relative mr-2">
@@ -48,7 +54,7 @@ test(testName, async (t) => {
 		<use href="src/assets/svg/toolbar.svg#cog"></use>
 	</svg>`)
 
-  await t.expect(pretty(subheadlineValue)).eql(expectedSubHeadlineValue)
+  await t.expect(pretty(subheadline.innerHTML)).eql(expectedSubHeadlineValue)
 
   const svgCog = await Selector("svg[data-desc='cog']")
 
