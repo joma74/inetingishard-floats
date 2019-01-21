@@ -22,7 +22,7 @@
     "jsx": "preserve"
   },
   "exclude": ["dist", "node_modules", "target"],
-  "include": ["src/js/**/*", "types/**/*"],
+  "include": ["src/**/*"],
   "typeAcquisition": {
     "enable": false
   }
