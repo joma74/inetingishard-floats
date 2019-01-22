@@ -45,7 +45,7 @@ var webpackConfig = [
       rules: [
         {
           test: /\.html$/,
-          exclude: [/src\/template.html/],
+          exclude: [/src[\\\/]template.html/],
           use: {
             loader: "vue-template-loader",
             options: {
