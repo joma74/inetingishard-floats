@@ -20,6 +20,7 @@ install:
   - yarn
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo %PATH%; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo $PATH; fi
+  - yarn testcafe --list-browsers
 
 env:
   - MOZ_HEADLESS=1
