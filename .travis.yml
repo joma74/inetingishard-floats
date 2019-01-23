@@ -19,7 +19,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
   - yarn
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo %PATH%; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo $PATH; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo $Env.Path; fi
   - yarn testcafe --list-browsers
 
 env:
