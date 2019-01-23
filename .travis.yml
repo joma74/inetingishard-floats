@@ -15,7 +15,6 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
-  - yarn --version
   - yarn
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo $PATH; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo $Env.Path; fi
