@@ -15,11 +15,11 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
   - yarn
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo $PATH; fi
     # https://docs.travis-ci.com/user/reference/windows/
     # Git BASH is the shell that’s used to run your build. See Git for Windows for more details.
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo $PATH; fi
+  - echo $PATH
   - yarn testcafe --list-browsers
 
 env:
