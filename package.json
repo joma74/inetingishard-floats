@@ -11,7 +11,7 @@
     "clean": "del-cli 'target/*' '!.gitkeep'",
     "start": "cross-env NODE_ENV=development webpack-dev-server --watch --hot --no-progress --config=webpack.config.js",
     "test": "npm-run-all clean testcafe",
-    "testcafe": "cross-var testcafe \"firefox:headless,chrome:headless --no-sandbox --disable-gpu\" -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
+    "testcafe": "cross-var testcafe \"chrome:headless --no-sandbox --disable-gpu\" -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
     "testcafe-live": "cross-var testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -L -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
     "startntest": "start-server-and-test start http-get://localhost:8080/dist/index.html testcafe",
     "ci": "npm-run-all clean startntest",
