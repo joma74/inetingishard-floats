@@ -17,7 +17,9 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
   - yarn
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo $PATH; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then Get-ChildItem Env:; fi
+    # https://docs.travis-ci.com/user/reference/windows/
+    # Git BASH is the shell that’s used to run your build. See Git for Windows for more details.
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo $PATH; fi
   - yarn testcafe --list-browsers
 
 env:
