@@ -16,11 +16,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
-  - yarn
-    # https://docs.travis-ci.com/user/reference/windows/
-    # Git BASH is the shell that’s used to run your build. See Git for Windows for more details.
-  - echo $PATH
-  - yarn testcafe --list-browsers
+  - yarn install
 
 env:
   - MOZ_HEADLESS=1
@@ -32,7 +28,16 @@ addons:
     packages:
       - imagemagick
 
-script: yarn ci
+script:
+  - yarn start
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
+  - netstat -an
+  - env
+    # https://docs.travis-ci.com/user/reference/windows/
+    # Git BASH is the shell that’s used to run your build. See Git for Windows for more details.
+  - echo $PATH
+  - yarn testcafe --list-browsers
+  - yarn test
 
 notifications:
   email:
