@@ -29,7 +29,7 @@ addons:
       - imagemagick
 
 script:
-  - yarn start
+  - yarn start &
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
   - netstat -an
   - env
@@ -38,6 +38,7 @@ script:
   - echo $PATH
   - yarn testcafe --list-browsers
   - yarn test
+  - kill %1
 
 notifications:
   email:
