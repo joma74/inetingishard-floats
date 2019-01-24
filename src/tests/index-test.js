@@ -3,7 +3,7 @@ import identifyUserAgent from "./utils/identify-useragent"
 
 const fixtureName = "Index_Page_Test"
 
-fixture(fixtureName).page("http://0.0.0.0:8080/dist/index.html")
+fixture(fixtureName).page("http://localhost:8080/dist/index.html")
 
 const getUA = ClientFunction(() => navigator.userAgent)
 

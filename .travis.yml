@@ -32,6 +32,7 @@ script:
   - yarn start &
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
   - netstat -an
+  - curl -s localhost:8080 >/dev/null && echo Success. || echo Fail.
   - env
     # https://docs.travis-ci.com/user/reference/windows/
     # Git BASH is the shell that’s used to run your build. See Git for Windows for more details.
