@@ -31,7 +31,8 @@ addons:
 script:
   - yarn start &
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
-  - netstat -an
+  - netstat -aon
+  - netstat -aon | grep -a 8080 >/dev/null && echo Success. || echo Fail.
   - curl -s localhost:8080 >/dev/null && echo Success. || echo Fail.
   - env
     # https://docs.travis-ci.com/user/reference/windows/
