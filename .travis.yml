@@ -20,7 +20,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then "C:\Program Files\Mozilla Firefox\firefox.exe" --version | cat; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then firefox --version; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then firefox --version; fi
   - yarn install
 
 env:
