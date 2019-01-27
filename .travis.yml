@@ -15,10 +15,12 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; fi
-  - google-chrome --version
+  #  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ISNOTSUPPORETD fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then google-chrome --version; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
-  - firefox --version
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then "C:\Program Files\Mozilla Firefox\firefox.exe" --version | cat; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then firefox --version; fi
   - yarn install
 
 env:
