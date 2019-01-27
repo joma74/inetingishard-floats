@@ -14,8 +14,11 @@ install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.13.0
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install googlechrome; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; fi
+  - google-chrome --version
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
+  - firefox --version
   - yarn install
 
 env:
@@ -29,18 +32,13 @@ addons:
       - imagemagick
 
 script:
-  - yarn start &
+  # https://docs.travis-ci.com/user/reference/windows/
+  # Git BASH is the shell that’s used to run your build. See Git for Windows for more details
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Chrome; REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
-  - netstat -aon
-  - netstat -aon | grep -a 8080 >/dev/null && echo Success. || echo Fail.
-  - curl -s localhost:8080 >/dev/null && echo Success. || echo Fail.
   - env
-    # https://docs.travis-ci.com/user/reference/windows/
-    # Git BASH is the shell that’s used to run your build. See Git for Windows for more details.
   - echo $PATH
   - yarn testcafe --list-browsers
-  - yarn test
-  - kill %1
+  - yarn ci
 
 notifications:
   email:
