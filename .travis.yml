@@ -21,8 +21,8 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then google-chrome --version; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mkdir -p "C:\Temp\ffprofiles"; echo $?; "C:\Program Files\Mozilla Firefox\firefox.exe" -CreateProfile "TestUser C:\Temp\ffprofiles\TestUser"; echo $?; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then "C:\Program Files\Mozilla Firefox\firefox.exe" -P TestUser -version | cat; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mkdir -p "C:\Temp\ffprofiles"; echo $?; "C:\Program Files\Mozilla Firefox\firefox.exe" -CreateProfile "TestUser C:\Temp\ffprofiles\TestUser" -disableMultiprocessing=true; echo $?; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then "C:\Program Files\Mozilla Firefox\firefox.exe" -P TestUser -version -disableMultiprocessing=true | cat; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then firefox --version; fi
   - yarn install
 
