@@ -15,7 +15,7 @@ install:
   # Git BASH is the shell that’s used to run your build. See Git for Windows for more details
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.13.0
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then wget -O FirefoxSetup.exe "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then wget -q -O FirefoxSetup.exe "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./FirefoxSetup.exe -ms /MaintenanceService=false; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ps -ef | grep firefox; echo $?; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
