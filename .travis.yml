@@ -15,7 +15,8 @@ install:
   # Git BASH is the shell that’s used to run your build. See Git for Windows for more details
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.13.0
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH="$HOME/.yarn/bin:$PATH"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox --ia "/S /MaintenanceService=false"; ps -ef | grep firefox; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install firefox --ia "/S /MaintenanceService=false"; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ps -ef | grep firefox; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then REG QUERY HKLM\\SOFTWARE\\Clients\\StartMenuInternet //s //f Firefox; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mkdir -p "C:\Temp\ffprofiles"; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then "C:\Program Files\Mozilla Firefox\firefox.exe" -CreateProfile "TestUser C:\Temp\ffprofiles\TestUser" -disableMultiprocessing=true; echo $?; fi
