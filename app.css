@@ -4,11 +4,11 @@
 
 @import "tailwindcss/utilities";
 
-@import "debug-grid.css";
+@import "src/assets/css/debug-grid";
 
-@import "app-ellipsis.css";
+@import "src/assets/css/app-ellipsis";
 
-@import "app-footer.css";
+@import "src/assets/css/app-footer.css";
 
 /* https://tailwindcss.com/docs/adding-new-utilities/
    Tailwind will intelligently group the responsive versions 
