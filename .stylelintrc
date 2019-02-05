@@ -10,6 +10,6 @@
       ]
     }],
     "block-no-empty": null,
-    "unit-whitelist": ["em", "rem", "%", "ch"]
+    "unit-whitelist": ["em", "rem", "%", "ch", "px"]
   }
 }
