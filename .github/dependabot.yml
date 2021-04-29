@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+    timezone: Europe/Vienna
+  open-pull-requests-limit: 10
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: start-server-and-test
+    versions:
+    - 1.11.7
+    - 1.12.0
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
